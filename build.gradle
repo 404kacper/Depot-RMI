@@ -1,0 +1,26 @@
+plugins {
+    id 'java'
+    id 'java-library'
+}
+
+version 'unspecified'
+
+repositories {
+    mavenCentral()
+}
+
+task runRmiServer(type: JavaExec) {
+    main = 'pl.edu.pwr.server.RunServer'
+    classpath = sourceSets.main.runtimeClasspath
+    args 'start'
+}
+
+dependencies {
+    implementation 'org.wso2.orbit.javax.rmi:rmi:1.0.1.wso2v1'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
+}
+
+test {
+    useJUnitPlatform()
+}
